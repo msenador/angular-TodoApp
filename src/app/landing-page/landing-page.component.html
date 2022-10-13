@@ -1,0 +1,10 @@
+<div style="text-align: center;">
+  <h1>
+    Click to enter
+  </h1>
+  <div *ngFor="let linkItem of links">
+    <a routerLink="{{ linkItem.link }}">
+      {{ linkItem.label}}
+    </a>
+  </div>
+  </div>

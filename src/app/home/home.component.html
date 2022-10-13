@@ -1,0 +1,50 @@
+<h1>Add new item</h1>
+<div style="display: flex; flex-direction: column; width: 130px;">
+<label>
+  Name
+</label>
+<input
+  type="text"
+  [(ngModel)]="nameInput"
+/>
+<mat-form-field appearance="fill">
+  <mat-label>Status</mat-label>
+  <select matNativeControl required [(ngModel)]="statusInput">
+    <option value="Incomplete">Incomplete</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Completed">Completed</option>
+  </select>
+</mat-form-field>
+
+<button (click)="handleAddItem()">
+  Add Item
+</button>
+</div>
+<hr />
+<h1>
+  Todo List:
+</h1>
+<hr />
+<li *ngFor="let item of todoList; let i = index;">
+  ({{ i }})
+  Name: {{ item.name }} -- Status: {{ item.status }}
+
+  <button (click)="handleDelete(item.name)">
+    Delete
+  </button>
+  <button (click)="handleOnEdit(item.name)">
+    Edit
+  </button>
+  <div *ngIf="item.showEdit">
+    <button (click)="handleUpdateIncomplete(item.name)">
+      Incomplete
+    </button>
+    <button (click)="handleUpdateInProgress(item.name)">
+      In Progress
+    </button>
+    <button (click)="handleComplete(item.name)">
+      Completed
+    </button>
+  </div>
+  <hr />
+</li>
